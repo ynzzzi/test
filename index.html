@@ -55,13 +55,13 @@ body {
     .product {
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 10px;
     }
 
     .product-details {
       position: absolute;
       max-width: 800px;
-      padding: 50px;
+      padding: 50px 100px 50px 0;
     }
     
 
@@ -71,6 +71,13 @@ body {
       margin-top: 100px;
       left: 30%;
     }
+
+    .product-info {
+  font-size: 14px;
+  margin-top: 10px;
+  left: 30%;
+  color: #555;
+}
 
     .product-price {
       font-size: 16px;
@@ -108,7 +115,7 @@ body {
       max-width: 100%;
       right: 100%;
       margin: 0 auto;
-      padding: 50px;
+      padding: 50px 0 50px 100px;
     }
 
     .product-image img {
@@ -158,12 +165,27 @@ body {
     .add-to-cart button:hover {
       background-color: #ddd;
     }
+    @media screen and (max-width: 600px) {
+      .product-details {
+        position: static;
+        padding: 0;
+      }
+      
+      .product-name, .product-price, .quantity {
+        text-align: center;
+        margin: 10px 0;
+      }
+      
+      .product-image img {
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="logo">
-      <a href="index.html"><img src="images/perfume.png" alt="로고"></a>
+      <a href="index.html"><img src="images/logo.png" alt="로고"></a>
     </div>
     <div class="info">
       <a href="page3.html">더티</a>
@@ -178,6 +200,9 @@ body {
     <div class="product">
       <div class="product-details">
         <div class="product-name">LUSH 'DIRTY'</div>
+        <div class="product-info"><br><br>더티 바디스프레이는<br>동물성 원료를 전혀 포함하지 않은<br>
+        영국 비건 협회의 인증을 받은 제품입니다.<br>
+      잔향이 매력적인 더티 바디스프레이의 청량한 향을 경험해보세요.</div>
         <div class="product-price">60,000￦</div>
         <div class="quantity">
           <button onclick="decreaseQuantity(this)">-</button>
@@ -199,6 +224,9 @@ body {
       </div>
       <div class="product-details">
         <div class="product-name">대니멕켄지 '밤쉘'</div>
+        <div class="product-info"><br><br>대니멕켄지 퓨어오일 퍼퓸은<br>순수한 원료로만 만들어지며<br>
+        에탄올을 첨가하지 않아 은은하게 발향되며<br>
+        편안한 분위기를 선사합니다.</div>
         <div class="product-price">126,000￦</div>
         <div class="quantity">
           <button onclick="decreaseQuantity(this)">-</button>
@@ -212,7 +240,7 @@ body {
       </div>
     </div>
 
-    <!-- 다른 상품들도 추가 가능 -->
+ 
 
     <div class="arrows">
       <div class="arrow prev-arrow" onclick="showPreviousProduct()">
