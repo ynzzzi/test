@@ -59,11 +59,11 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  margin: 0 20px; /* 간격을 조정할 마진 값 */
+  margin: 0 20px; 
 }
 
 .header .info a:not(:last-child) {
-  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+  margin-right: 20px; 
 }
 
 .cart {
@@ -87,8 +87,8 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
-    opacity: 1; /* 초기에는 보이도록 설정 */
-    transition: opacity 1s; /* 페이드 효과를 위한 transition 설정 */
+    opacity: 1; 
+    transition: opacity 1s; 
     position: fixed;
     bottom: 0;
     left: 0;
@@ -96,7 +96,7 @@ footer {
 }
 
 .hidden {
-    opacity: 0; /* 스크롤 시 사라지도록 설정 */
+    opacity: 0; 
 }
 
 nav {
@@ -231,7 +231,7 @@ nav a {
         var footer = document.querySelector("footer");
         var scrollPosition = window.innerHeight + window.pageYOffset;
         var footerPosition = footer.offsetTop + footer.offsetHeight;
-        var products = document.querySelectorAll('.container'); // 상품 요소들을 선택
+        var products = document.querySelectorAll('.container'); 
     var currentIndex = 0; //
 
         if (scrollPosition >= footerPosition) {
