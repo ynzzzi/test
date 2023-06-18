@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>perfume</title>
+    <link rel="stylesheet" href="assets/css/styles2.css">
+    <script src="assets/js/script2.js"></script>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif KR', serif;
+}
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.text {
+    float: left;
+    width: 50%;
+}
+
+.image {
+    float: right;
+    max-width: 100%;
+    height: auto;
+}
+
+.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .cart img {
+      height: 30px;
+    }
+
+    .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+    .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+.info {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px; /* 간격을 조정할 마진 값 */
+}
+
+.header .info a:not(:last-child) {
+  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+}
+
+.cart {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+h1, h2 {
+    margin: 0;
+}
+
+section {
+    padding: 100px 0;
+    min-height: 100vh;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    opacity: 1; /* 초기에는 보이도록 설정 */
+    transition: opacity 1s; /* 페이드 효과를 위한 transition 설정 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.hidden {
+    opacity: 0; /* 스크롤 시 사라지도록 설정 */
+}
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #333;
+    color: #fff;
+    width: 150px;
+    height: 100vh;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#section1" onclick="smoothScroll(event, 'section1')">향수 정보</a></li>
+            <li><a href="#section2" onclick="smoothScroll(event, 'section2')">향 설명</a></li>
+            <li><a href="#section3" onclick="smoothScroll(event, 'section3')">연출 방법</a></li>
+        </ul>
+    </nav>
+    <header class="header">
+        <div class="logo">
+          <a href="index.html"><img src="images/perfume.png" alt="로고"></a>
+        </div>
+        <div class="info">
+          <a href="page3.html">더티</a>
+          <a href="page2.html">밤쉘</a>
+        </div>
+        <div class="cart">
+          <a href="장바구니1.html"><img src="images/cart.png" alt="장바구니"></a>
+        </div>
+      </header>
+    
+    
+    <section id="section1" class="content">
+        <div class="container">
+            <h1>LUSH 'DIRTY'</h1><br>
+            <div class="text">
+                <p>
+                    타라곤과 타임꽃의 상쾌한 향기와<br>
+                    감미로운 샌달우드와 라벤더의<br>
+                    매력적인 향기<br>
+                    <br><br><br><br>
+                    <b>60,000￦</b>
+                </p>
+                <div class="quantity">
+                    <button class="decrease-button" onclick="decreaseQuantity(this)">-</button>
+                    <input type="text" value="1">
+                    <button class="increase-button" onclick="increaseQuantity(this)">&#x2B;</button>
+                </div>
+                <div class="add-to-cart">
+                    <button onclick="addToCart()">장바구니에 추가</button>
+                </div>
+            </div>
+            <div class="image">
+                <img src="images/더티.png" alt="더티 이미지">
+            </div>
+        </div>
+    </section>
+
+    <section id="section2" class="content">
+        <div class="container">
+            <img src="images/더티향.png" class="image"> 
+        </div>
+    </section>
+
+    <section id="section3" class="content">
+        <div class="container">
+                <img src="images/더티연출.png" class="image">  
+        </div>
+    </section>
+<script>
+    window.addEventListener("scroll", function() {
+        var footer = document.querySelector("footer");
+        var scrollPosition = window.innerHeight + window.pageYOffset;
+        var footerPosition = footer.offsetTop + footer.offsetHeight;
+    
+        if (scrollPosition >= footerPosition) {
+            footer.classList.add("hidden");
+        } else {
+            footer.classList.remove("hidden");
+        }
+    });
+    
+    function smoothScroll(event, target) {
+        event.preventDefault();
+        const targetElement = document.getElementById(target);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+    function decreaseQuantity(button) {
+            var input = button.nextElementSibling;
+            var value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+        }
+
+        function increaseQuantity(button) {
+            var input = button.previousElementSibling;
+            var value = parseInt(input.value);
+            input.value = value + 1;
+        }
+
+        function addToCart() {
+            var quantityInput = document.querySelector('.quantity input');
+            var quantity = parseInt(quantityInput.value);
+            var price = 60000;
+            var totalPrice = quantity * price;
+
+            alert(quantity + "개의 상품이 장바구니에 추가되었습니다. 총 가격: " + totalPrice + "￦");
+        }
+    </script>
+</body>
+</html>

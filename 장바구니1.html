@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>장바구니</title>
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif KR', serif;
+}
+   
+.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .cart img {
+      height: 30px;
+    }
+
+    .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+    .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+.info {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px; /* 간격을 조정할 마진 값 */
+}
+
+.header .info a:not(:last-child) {
+  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+}
+
+.cart {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+      width: 100px;
+      height: 100px;
+      margin-right: 20px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-details {
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .product-price {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity input {
+      width: 30px;
+      text-align: center;
+      margin: 0 5px;
+    }
+
+    .quantity button {
+      background-color: #f4f4f4;
+      border: none;
+      cursor: pointer;
+    }
+
+    .quantity button:focus {
+      outline: none;
+    }
+
+    .quantity button:hover {
+      background-color: #ddd;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    .actions button {
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .actions button:focus {
+      outline: none;
+    }
+
+    .actions button:hover {
+      background-color: #ddd;
+    }
+
+    .product-checkbox {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html"><img src="images/perfume.png" alt="로고"></a>
+    </div>
+    <div class="info">
+      <a href="page3.html">더티</a>
+      <a href="page2.html">밤쉘</a>
+    </div>
+    <div class="cart">
+      <a href="장바구니1.html"><img src="images/cart.png" alt="장바구니"></a>
+    </div>
+  </header>
+
+    
+  <div class="container">
+    <h1>장바구니</h1>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="images/더티.png" alt="상품 이미지">
+      </div>
+      <div class="product-details">
+        <div class="product-name">상품 1</div>
+        <div class="product-price">$10</div>
+        <div class="quantity">
+          <button onclick="decreaseQuantity(this)">-</button>
+          <input type="text" value="1">
+          <button onclick="increaseQuantity(this)">+</button>
+        </div>
+      </div>
+      <input type="checkbox" class="product-checkbox">
+    </div>
+    <hr>
+    <div class="product">
+        <div class="product-image">
+          <img src="images/밤쉘.png" alt="상품 이미지">
+        </div>
+        <div class="product-details">
+          <div class="product-name">상품 1</div>
+          <div class="product-price">$10</div>
+          <div class="quantity">
+            <button onclick="decreaseQuantity(this)">-</button>
+            <input type="text" value="1">
+            <button onclick="increaseQuantity(this)">+</button>
+          </div>
+        </div>
+        <input type="checkbox" class="product-checkbox">
+      </div>
+
+    <!-- 다른 상품들도 추가 가능 -->
+
+    <div class="actions">
+      <button onclick="removeSelectedProducts()">선택 삭제</button>
+      <button onclick="removeAllProducts()">전체 삭제</button>
+      <button onclick="checkout()">결제하기</button>
+    </div>
+  </div>
+
+  <script>
+    function increaseQuantity(element) {
+      var input = element.parentElement.querySelector('input');
+      var value = parseInt(input.value);
+      input.value = value + 1;
+    }
+
+    function decreaseQuantity(element) {
+      var input = element.parentElement.querySelector('input');
+      var value = parseInt(input.value);
+      if (value > 1) {
+        input.value = value - 1;
+      }
+    }
+
+    function removeSelectedProducts() {
+      var checkboxes = document.querySelectorAll('.product-checkbox');
+      checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          checkbox.parentElement.remove();
+        }
+      });
+    }
+
+    function removeAllProducts() {
+      var products = document.querySelectorAll('.product');
+      products.forEach(function (product) {
+        product.remove();
+      });
+    }
+
+    function checkout() {
+      // 결제 로직 구현
+      alert('결제가 완료되었습니다!');
+    }
+  </script>
+</body>
+</html>

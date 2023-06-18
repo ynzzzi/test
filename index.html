@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>웹사이트</title>
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif KR', serif;
+}
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .cart img {
+      height: 30px;
+    }
+
+    .logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+.info {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px; /* 간격을 조정할 마진 값 */
+}
+
+.header .info a:not(:last-child) {
+  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+}
+
+.cart {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+    .product {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .product-details {
+      position: absolute;
+      max-width: 800px;
+      padding: 50px;
+    }
+    
+
+    .product-name {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 100px;
+      left: 30%;
+    }
+
+    .product-price {
+      font-size: 16px;
+      margin-top: 150px;
+      left: 30%;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .quantity input {
+      width: 30px;
+      text-align: center;
+      margin: 0 5px;
+    }
+
+    .quantity button {
+      background-color: #f4f4f4;
+      border: none;
+      cursor: pointer;
+    }
+
+    .quantity button:focus {
+      outline: none;
+    }
+
+    .quantity button:hover {
+      background-color: #ddd;
+    }
+
+    .product-image {
+      max-width: 100%;
+      right: 100%;
+      margin: 0 auto;
+      padding: 50px;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      right: 100%;
+      margin-left: 300px;
+      padding: 100px;
+    }
+
+    .arrows {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 40%;
+      left: 0;
+      right: 0;
+    }
+
+    .arrow {
+      width: 50px;
+      height: 50px;
+      background-color: #f4f4f4;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .arrow img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .add-to-cart {
+      margin-top: 10px;
+    }
+
+    .add-to-cart button {
+      background-color: #f4f4f4;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .add-to-cart button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html"><img src="images/perfume.png" alt="로고"></a>
+    </div>
+    <div class="info">
+      <a href="page3.html">더티</a>
+      <a href="page2.html">밤쉘</a>
+    </div>
+    <div class="cart">
+      <a href="장바구니1.html"><img src="images/cart.png" alt="장바구니"></a>
+    </div>
+  </header>
+
+  <div class="body">
+    <div class="product">
+      <div class="product-details">
+        <div class="product-name">LUSH 'DIRTY'</div>
+        <div class="product-price">60,000￦</div>
+        <div class="quantity">
+          <button onclick="decreaseQuantity(this)">-</button>
+          <input type="text" value="1">
+          <button onclick="increaseQuantity(this)">+</button>
+        </div>
+        <div class="add-to-cart">
+          <button onclick="addToCart()">장바구니에 추가</button>
+        </div>
+        <br><a href="page3.html">제품 상세보기 ></a>
+      </div>
+      <div class="product-image">
+        <img src="images/더티.png" alt="상품 이미지">
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-image">
+        <img src="images/밤쉘.png" alt="상품 이미지">
+      </div>
+      <div class="product-details">
+        <div class="product-name">대니멕켄지 '밤쉘'</div>
+        <div class="product-price">126,000￦</div>
+        <div class="quantity">
+          <button onclick="decreaseQuantity(this)">-</button>
+          <input type="text" value="1">
+          <button onclick="increaseQuantity(this)">+</button>
+        </div>
+        <div class="add-to-cart">
+          <button onclick="addToCart()">장바구니에 추가</button>
+        </div>
+        <br><a href="page2.html">제품 상세보기 ></a>
+      </div>
+    </div>
+
+    <!-- 다른 상품들도 추가 가능 -->
+
+    <div class="arrows">
+      <div class="arrow prev-arrow" onclick="showPreviousProduct()">
+        <img src="images/화살표p.png" alt="이전">
+      </div>
+      <div class="arrow next-arrow" onclick="showNextProduct()">
+        <img src="images/화살표.png" alt="다음">
+      </div>
+    </div>
+  </div>
+
+  <script>
+  var products = document.querySelectorAll('.product');
+  var currentIndex = 0;
+
+  function showProduct(index) {
+    for (var i = 0; i < products.length; i++) {
+      products[i].style.display = 'none';
+    }
+    products[index].style.display = 'flex';
+    currentIndex = index;
+  }
+
+  function showPreviousProduct() {
+    if (currentIndex > 0) {
+      showProduct(currentIndex - 1);
+    }
+  }
+
+  function showNextProduct() {
+    if (currentIndex < products.length - 1) {
+      showProduct(currentIndex + 1);
+    }
+  }
+
+  function increaseQuantity(element) {
+    var input = element.parentElement.querySelector('input');
+    var value = parseInt(input.value);
+    input.value = value + 1;
+  }
+
+  function decreaseQuantity(element) {
+    var input = element.parentElement.querySelector('input');
+    var value = parseInt(input.value);
+    if (value > 1) {
+      input.value = value - 1;
+    }
+  }
+
+  function addToCart() {
+    var productName = products[currentIndex].querySelector('.product-name').textContent;
+    var quantity = parseInt(products[currentIndex].querySelector('.quantity input').value);
+    // 여기에서 실제로 장바구니에 상품을 추가하는 로직을 구현합니다.
+    // 추가되었다는 안내창을 표시하거나 다른 처리를 수행합니다.
+    alert(quantity + "개의 " + productName + "이(가) 장바구니에 추가되었습니다.");
+  }
+
+  // 초기에 첫 번째 상품 표시
+  showProduct(0);
+  </script>
+</body>
+</html>
