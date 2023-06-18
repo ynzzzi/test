@@ -27,27 +27,27 @@ body {
     }
 
     .logo {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+      flex: 1;
+      display: flex;
+      justify-content: center;
 }
 
 
-.info {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  margin: 0 20px; /* 간격을 조정할 마진 값 */
+   .info {
+     flex: 1;
+     display: flex;
+     justify-content: center;
+     margin: 0 20px;
 }
 
-.header .info a:not(:last-child) {
-  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
+   .header .info a:not(:last-child) {
+     margin-right: 20px;
 }
 
-.cart {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  .cart {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -73,10 +73,10 @@ body {
     }
 
     .product-info {
-  font-size: 14px;
-  margin-top: 10px;
-  left: 30%;
-  color: #555;
+     font-size: 14px;
+     margin-top: 10px;
+     left: 30%;
+     color: #555;
 }
 
     .product-price {
@@ -293,12 +293,11 @@ body {
   function addToCart() {
     var productName = products[currentIndex].querySelector('.product-name').textContent;
     var quantity = parseInt(products[currentIndex].querySelector('.quantity input').value);
-    // 여기에서 실제로 장바구니에 상품을 추가하는 로직을 구현합니다.
-    // 추가되었다는 안내창을 표시하거나 다른 처리를 수행합니다.
+
     alert(quantity + "개의 " + productName + "이(가) 장바구니에 추가되었습니다.");
   }
 
-  // 초기에 첫 번째 상품 표시
+
   showProduct(0);
   </script>
 </body>
