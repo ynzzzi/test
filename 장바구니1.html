@@ -44,11 +44,11 @@ body {
   flex: 1;
   display: flex;
   justify-content: center;
-  margin: 0 20px;
+  margin: 0 20px; /* 간격을 조정할 마진 값 */
 }
 
 .header .info a:not(:last-child) {
-  margin-right: 20px; 
+  margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
 }
 
 .cart {
@@ -148,12 +148,36 @@ body {
     .product-checkbox {
       margin-right: 10px;
     }
+
+    @media screen and (max-width: 600px) {
+  .product {
+    flex-direction: column;
+  }
+
+  .product-image {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .product-details {
+    text-align: center;
+  }
+
+  .quantity {
+    justify-content: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
   </style>
 </head>
 <body>
   <header class="header">
     <div class="logo">
-      <a href="index.html"><img src="images/perfume.png" alt="로고"></a>
+      <a href="index.html"><img src="images/logo.png" alt="로고"></a>
     </div>
     <div class="info">
       <a href="page3.html">더티</a>
@@ -173,7 +197,7 @@ body {
         <img src="images/더티.png" alt="상품 이미지">
       </div>
       <div class="product-details">
-       <div class="product-name">더티</div>
+        <div class="product-name">더티</div>
         <div class="product-price">60,000￦</div>
         <div class="quantity">
           <button onclick="decreaseQuantity(this)">-</button>
@@ -200,12 +224,12 @@ body {
         <input type="checkbox" class="product-checkbox">
       </div>
 
-
+    <!-- 다른 상품들도 추가 가능 -->
 
     <div class="actions">
       <button onclick="removeSelectedProducts()">선택 삭제</button>
       <button onclick="removeAllProducts()">전체 삭제</button>
-      <button onclick="checkout()">결제하기</button>
+      <button onclick="confirmCheckout()">결제하기</button>
     </div>
   </div>
 
@@ -238,6 +262,31 @@ body {
       products.forEach(function (product) {
         product.remove();
       });
+    }
+
+    function confirmCheckout() {
+      var products = document.querySelectorAll('.product');
+      var selectedProducts = [];
+
+      products.forEach(function (product) {
+        var checkbox = product.querySelector('.product-checkbox');
+        var quantityInput = product.querySelector('.quantity input');
+        var productName = product.querySelector('.product-name').textContent;
+        var quantity = parseInt(quantityInput.value);
+
+        if (checkbox.checked && quantity > 0) {
+          selectedProducts.push(productName + ' ' + quantity + '개');
+        }
+      });
+
+      if (selectedProducts.length > 0) {
+        var confirmation = '선택하신 상품을 결제하시겠습니까?\n\n' + selectedProducts.join(', ');
+        if (confirm(confirmation)) {
+          checkout();
+        }
+      } else {
+        alert('상품을 선택해주세요.');
+      }
     }
 
     function checkout() {
